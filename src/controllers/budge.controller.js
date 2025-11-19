@@ -28,7 +28,7 @@ export const upsertBudgetController = async (req) => {
   }
 };
 
-export const deleteBudgetController = async (req, res) => {
+export const deleteBudgetController = async (req) => {
   try {
     return await deleteBudgetServices(req.user.id, req.params.id);
   } catch (error) {
