@@ -1,3 +1,4 @@
+import customError from "../../config/customError.js";
 import {
   deleteBudgetServices,
   getBudgetsServices,
