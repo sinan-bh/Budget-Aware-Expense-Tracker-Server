@@ -1,5 +1,5 @@
-import { UnauthorizedException } from "../../utils/customExceptions.js";
-import { createErrorLog } from "../../utils/serviceLoggers.js";
+import { UnauthorizedException } from "../utils/customExceptions.js";
+import { createErrorLog } from "../utils/serviceLoggers.js";
 import jwt from "jsonwebtoken";
 
 // Define the authentication middleware function

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { logger } from "../utils/logger.js"; // Importing the logger
+import { logger } from "../src/utils/logger.js"; // Importing the logger
 import { AsyncLocalStorage } from "node:async_hooks";
 const asyncLocalStorage = new AsyncLocalStorage();
 

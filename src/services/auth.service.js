@@ -1,8 +1,12 @@
 import bcrypt from "bcryptjs";
 import User from "../model/userSchema.js";
-import { createErrorLog, createInfoLog } from "../../utils/serviceLoggers.js";
+import { createErrorLog, createInfoLog } from "../utils/serviceLoggers.js";
 import customError from "../../config/customError.js";
-import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../../utils/jwt.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+  verifyRefreshToken,
+} from "../utils/jwt.js";
 
 export const signupService = async (userData) => {
   const { email, password } = userData;
@@ -30,7 +34,7 @@ export const loginService = async (userData) => {
 
   const accessToken = await generateAccessToken(payload);
   const refreshToken = await generateRefreshToken(payload);
-  
+
   return {
     message: "Login successful ",
     cookies: [
@@ -48,28 +52,27 @@ export const loginService = async (userData) => {
   };
 };
 
-
 export const createAccessTokenServices = async (refreashToken) => {
-    const response = await verifyRefreshToken(refreashToken);
-    const { id, email } = response;
-    const payload = {
-      id,
-      email,
+  const response = await verifyRefreshToken(refreashToken);
+  const { id, email } = response;
+  const payload = {
+    id,
+    email,
+  };
+  if (response) {
+    const newAccessToken = await generateAccessToken(payload);
+    createInfoLog("AccessToken created", "auth.refresh-access-token");
+    return {
+      cookies: [
+        {
+          name: "accessToken",
+          value: newAccessToken,
+          options: { maxAge: 15 * 60 * 1000 },
+        },
+      ],
     };
-    if (response) {
-      const newAccessToken = await generateAccessToken(payload);
-      createInfoLog('AccessToken created', 'auth.refresh-access-token');
-      return {
-        cookies: [
-          {
-            name: 'accessToken',
-            value: newAccessToken,
-            options: { maxAge: 15 * 60 * 1000 },
-          },
-        ],
-      };
-    } else {
-      createErrorLog('AccessToken created', 'auth.refresh-access-token');
-      return customError(403, 'Access token creation failed');
-    }
+  } else {
+    createErrorLog("AccessToken created", "auth.refresh-access-token");
+    return customError(403, "Access token creation failed");
+  }
 };

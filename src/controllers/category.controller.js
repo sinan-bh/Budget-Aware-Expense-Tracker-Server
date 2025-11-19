@@ -1,4 +1,3 @@
-import Category from "../model/categorySchema.js";
 import {
   addCategoryService,
   deleteCategoryService,

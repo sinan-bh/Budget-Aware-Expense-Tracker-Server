@@ -3,7 +3,7 @@
 import {
   getContextValue,
   getCorrelationId,
-} from "../config/correlationMiddleware.js";
+} from "../../config/correlationMiddleware.js";
 import { logger } from "./logger.js";
 
 export const createErrorLog = (message, service) =>
