@@ -1,5 +1,5 @@
 import customError from "../../config/customError.js";
-import { loginService, signupService } from "../services/auth.service.js";
+import { createAccessTokenServices, loginService, signupService } from "../services/auth.service.js";
 
 export const signup = async (req, res) => {
   try {
@@ -12,9 +12,21 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = async (req) => {    
+export const login = async (req) => {
   try {
     return await loginService(req.body);
+  } catch (error) {
+    return customError(
+      error.statusCode || error.status || 500,
+      error.message || "Something went wrong"
+    );
+  }
+};
+
+export const createAccessToken = async (req) => {
+  const { refreshToken } = req?.cookies;
+  try {
+    return await createAccessTokenServices(refreshToken);
   } catch (error) {
     return customError(
       error.statusCode || error.status || 500,
