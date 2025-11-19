@@ -5,6 +5,6 @@ const budgetSchema = new mongoose.Schema({
   categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   month: String, // e.g: "2025-06"
   limit: Number
-});
+}, { timestamps: true });
 
 export default mongoose.model("Budget", budgetSchema);

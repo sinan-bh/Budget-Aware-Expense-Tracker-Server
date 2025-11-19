@@ -5,6 +5,6 @@ const expenseSchema = new mongoose.Schema({
   categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   amount: Number,
   date: Date
-});
+}, { timestamps: true });
 
 export default mongoose.model("Expense", expenseSchema);

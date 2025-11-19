@@ -4,7 +4,7 @@ import {
   getCategoryService,
 } from "../services/category.service.js";
 
-export const getCategories = async (req) => {
+export const getCategoriesController = async (req) => {
   try {
     return await getCategoryService(req.user.id);
   } catch (error) {
@@ -15,7 +15,7 @@ export const getCategories = async (req) => {
   }
 };
 
-export const addCategory = async (req) => {
+export const addCategoryController = async (req) => {
   try {
     return await addCategoryService(req.user.id, req.body);
   } catch (error) {
@@ -26,7 +26,7 @@ export const addCategory = async (req) => {
   }
 };
 
-export const deleteCategory = async (req) => {
+export const deleteCategoryController = async (req) => {
   try {
     return await deleteCategoryService(req.params.id, req.user.id);
   } catch (error) {

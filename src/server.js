@@ -6,6 +6,7 @@ import connectDB from "../config/db.js";
 
 import authRoutes from "./routes/auth.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
+import budgetsRoutes from "./routes/budget.routes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/budgets", budgetsRoutes);
 
 connectDB();
 
