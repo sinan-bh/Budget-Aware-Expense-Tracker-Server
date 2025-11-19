@@ -1,0 +1,21 @@
+{
+  "name": "budget-aware-expense-tracker",
+  "version": "1.0.0",
+  "description": "Build a small web app that helps a user track spending, compare it to their",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.0",
+    "nodemon": "^3.1.11"
+  }
+}
