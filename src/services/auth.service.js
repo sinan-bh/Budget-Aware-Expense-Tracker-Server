@@ -41,12 +41,22 @@ export const loginService = async (userData) => {
       {
         name: "accessToken",
         value: accessToken,
-        options: { maxAge: 15 * 60 * 1000 },
+        options: {
+          httpOnly: true,
+          secure: true, // REQUIRED for HTTPS
+          sameSite: "none", // REQUIRED for cross-domain
+          maxAge: 15 * 60 * 1000,
+        },
       },
       {
         name: "refreshToken",
         value: refreshToken,
-        options: { maxAge: 7 * 24 * 60 * 60 * 1000 },
+        options: {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        },
       },
     ],
   };
@@ -89,4 +99,4 @@ export const logoutServices = async (res) => {
   });
 
   return { message: "Logged out successfully" };
-}
+};
