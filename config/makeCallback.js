@@ -53,6 +53,16 @@ const makeCallback = (callback) => (req, res, next) => {
       return res.redirect(statusCode, redirect);
     }
 
+    // set cookies
+    cookies.forEach((cookie) => {
+      res.cookie(cookie.name, cookie.value, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        ...cookie.options,
+      });
+    });
+
     // send the response data
     res.status(statusCode).send({ statusCode, message, data });
   };
