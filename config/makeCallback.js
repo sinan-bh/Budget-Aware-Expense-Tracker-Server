@@ -58,7 +58,7 @@ const makeCallback = (callback) => (req, res, next) => {
       res.cookie(cookie.name, cookie.value, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "none",
         ...cookie.options,
       });
     });
