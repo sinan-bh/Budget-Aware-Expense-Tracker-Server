@@ -10,7 +10,7 @@ import { isUserAuthenticated } from "../middleware/isUserAuthenticated.js";
 const router = express.Router();
 
 router.get("/", isUserAuthenticated, makeCallback(getBudgetsController));
-router.post("/", isUserAuthenticated, makeCallback(upsertBudgetController));
+router.put("/", isUserAuthenticated, makeCallback(upsertBudgetController));
 router.delete(
   "/:id",
   isUserAuthenticated,

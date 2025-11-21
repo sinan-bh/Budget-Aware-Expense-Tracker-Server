@@ -42,11 +42,11 @@ const makeCallback = (callback) => (req, res, next) => {
     } = response ?? {};
 
     // sent headers from controllers
-    if (headers) {
-      sentHeaders(res, headers);
-    }
+    // if (headers) {
+    //   sentHeaders(res, headers);
+    // }
     // sent configured headers
-    sentConfiguredHeaders(res);
+    // sentConfiguredHeaders(res);
 
     // redirect if provided
     if (redirect) {

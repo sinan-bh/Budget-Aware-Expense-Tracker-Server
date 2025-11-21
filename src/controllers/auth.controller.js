@@ -1,5 +1,5 @@
 import customError from "../../config/customError.js";
-import { createAccessTokenServices, loginService, signupService } from "../services/auth.service.js";
+import { createAccessTokenServices, loginService, logoutServices, signupService } from "../services/auth.service.js";
 
 export const signup = async (req, res) => {
   try {
@@ -34,3 +34,4 @@ export const createAccessToken = async (req) => {
     );
   }
 };
+

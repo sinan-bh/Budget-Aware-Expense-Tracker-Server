@@ -7,7 +7,7 @@ import {
 
 export const getBudgetsController = async (req) => {
   try {
-    const { month } = req.query;
+    const { month } = req.query;    
     return await getBudgetsServices(req.user.id, month);
   } catch (error) {
     return customError(

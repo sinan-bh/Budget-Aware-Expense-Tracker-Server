@@ -76,3 +76,17 @@ export const createAccessTokenServices = async (refreashToken) => {
     return customError(403, "Access token creation failed");
   }
 };
+
+export const logoutServices = async (res) => {
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    secure: true,
+  });
+
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+  });
+
+  return { message: "Logged out successfully" };
+}
